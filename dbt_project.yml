@@ -1,0 +1,30 @@
+name: 'guest_reactivation_engine'
+version: '1.0.0'
+config-version: 2
+
+profile: 'guest_reactivation_engine'
+
+model-paths: ["guests_warehouse/models"]
+analysis-paths: ["guests_warehouse/analyses"]
+test-paths: ["guests_warehouse/tests"]
+seed-paths: ["guests_warehouse/seeds"]
+macro-paths: ["guests_warehouse/macros"]
+snapshot-paths: ["guests_warehouse/snapshots"]
+
+target-path: "target"
+
+models:
+  guest_reactivation_engine:
+
+    silver:
+      +schema: silver
+      +materialized: table
+
+    gold:
+      +schema: gold
+      +materialized: table
+
+seeds: 
+  guest_reactivation_engine:
+    +schema:
+      bronze
