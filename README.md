@@ -2,108 +2,217 @@
 
 ## Overview
 
-Guest Reactivation Engine is a hospitality-focused customer intelligence project designed to transform historical hotel guest data into actionable business opportunities.
+Guest Reactivation Engine is a hospitality-focused analytics project designed to transform historical guest data into actionable revenue opportunities.
 
-The project consolidates, cleans, enriches and segments guest information from multiple properties, creating a foundation for guest reactivation campaigns, customer retention initiatives and future loyalty programs.
+The project consolidates, standardizes, enriches and segments guest information from multiple hotel properties, creating a centralized customer intelligence layer that supports guest reactivation initiatives, retention strategies and future loyalty programs.
 
-Data coverage spans from January 2015 to June 2026.
+The solution demonstrates a complete analytics workflow, from raw data ingestion through dimensional modeling and business-facing reporting.
 
-Hotels included:
-
-- Alecrim ao Chiado
-- Casa Palmela
-- Alfama Yellow House
+**Data Coverage:** January 2015 – June 2026
 
 ---
 
 ## Business Problem
 
-Hotels invest significant resources acquiring guests through:
+Hotels spend significant resources acquiring guests through channels such as:
 
-- Booking.com
-- Expedia
-- Travel Agencies
-- Direct Channels
+* Booking.com
+* Expedia
+* Travel Agencies
+* Direct Reservations
 
-After checkout, most guests are never contacted again.
+Despite these acquisition costs, many guests are never contacted again after checkout.
 
-This creates missed opportunities:
+This results in:
 
-- Lost direct bookings
-- High OTA dependency
-- Low guest retention
-- Untapped customer lifetime value
+* Lost direct booking opportunities
+* High OTA dependency
+* Reduced customer retention
+* Underutilized guest databases
+* Lower customer lifetime value
 
-This project aims to identify, segment and reactivate historical guests using existing customer data.
+The objective of this project is to identify, segment and prioritize historical guests who can be targeted through future reactivation campaigns.
 
 ---
 
-## Objectives
+## Solution
 
-### Primary
+The Guest Reactivation Engine creates a centralized guest database by integrating historical reservation data from multiple hotel properties.
 
-- Build a centralized guest database
-- Identify contactable guests
-- Create guest segments
-- Support reactivation campaigns
-- Increase direct bookings
+The platform applies data cleaning, standardization and business logic to generate guest segments and CRM-ready datasets that support revenue-generating initiatives.
 
-### Secondary
+Key outputs include:
 
-- Reduce OTA dependency
-- Improve guest retention
-- Enable future loyalty programs
-- Support hospitality analytics
+* Contactable guest populations
+* Reactivation candidate lists
+* Family traveler segments
+* Weekend traveler segments
+* Guest demographic analysis
+* Contactability reporting
 
 ---
 
 ## Architecture
 
-CSV Historical Data
+```text
+Historical Guest Data (CSV)
 
-↓
+            ↓
 
-PostgreSQL Bronze Layer
+    PostgreSQL Bronze Layer
 
-↓
+            ↓
 
-dbt Silver Layer
+       dbt Silver Layer
 
-↓
+            ↓
 
-dbt Gold Layer
+        dbt Gold Layer
 
-↓
+            ↓
 
-Power BI Dashboards
+      Power BI Reporting
+
+            ↓
+
+   Guest Reactivation Insights
+```
 
 ---
 
 ## Technology Stack
 
-- PostgreSQL
-- dbt
-- SQL
-- Power BI
+### Data Storage
+
+* PostgreSQL
+
+### Data Transformation
+
+* dbt Core
+* SQL
+
+### Analytics & Reporting
+
+* Power BI
+
+### Data Modeling
+
+* Medallion Architecture
+* Star Schema Principles
+* Hospitality CRM Analytics
+
+### Version Control
+
+* Git
+* GitHub
 
 ---
 
-## Gold Layer
+## Data Pipeline
+
+### Bronze Layer
+
+Raw historical guest datasets are ingested into PostgreSQL while preserving source-level fidelity.
+
+Responsibilities:
+
+* Data ingestion
+* Source consolidation
+* Initial profiling
+* Raw storage
+
+### Silver Layer
+
+Data is standardized and integrated into a unified guest dataset.
+
+Responsibilities:
+
+* Data cleaning
+* Data normalization
+* Guest consolidation
+* Business rule application
+
+### Gold Layer
+
+Business-ready marts are created to support CRM analytics and guest reactivation initiatives.
+
+Responsibilities:
+
+* Customer segmentation
+* Reactivation targeting
+* Reporting datasets
+* Executive analytics
+
+---
+
+## Gold Layer Models
 
 ### CRM
 
-- mart_contactable_guests
-- mart_reactivation_candidates
+* mart_contactable_guests
+* mart_reactivation_candidates
 
 ### Segmentation
 
-- mart_guest_age_analysis
-- mart_family_travel
-- mart_weekend_travelers
+* mart_family_travel
+* mart_guest_age_analysis
+* mart_weekend_travelers
 
 ### Reporting
 
-- mart_contactable_distribution
+* mart_contactable_distribution
+
+---
+
+## Business Use Cases
+
+### Guest Reactivation
+
+Identify former guests who can be targeted through future marketing campaigns.
+
+### Direct Booking Growth
+
+Reduce OTA dependency by increasing direct reservations from returning guests.
+
+### Customer Segmentation
+
+Create targeted guest groups based on travel patterns and demographics.
+
+### Hospitality Analytics
+
+Support commercial and operational decision-making through guest intelligence.
+
+---
+
+## Repository Structure
+
+```text
+guest-reactivation-engine/
+
+├── dashboards/
+│   └── screenshots/
+
+├── docs/
+│   ├── architecture.md
+│   ├── business_case.md
+│   ├── dashboard_guide.md
+│   ├── data_dictionary.md
+│   └── reactivation_strategy.md
+
+├── postgres/
+│   └── bronze/
+
+├── guests_warehouse/
+│   ├── models/
+│   │   ├── silver/
+│   │   └── gold/
+│   ├── seeds/
+│   └── macros/
+
+├── README.md
+├── dbt_project.yml
+└── profiles.yml
+```
 
 ---
 
@@ -115,27 +224,33 @@ Guest Reactivation Campaigns
 
 ### Phase 2
 
-Email Automation
+Email Automation Workflows
 
 ### Phase 3
 
-Loyalty Program
+Guest Loyalty Program Analytics
 
 ### Phase 4
 
-Hospitality Data Platform Integration
+Integration with Hospitality Data Platform
+
+### Phase 5
+
+Predictive Retention and Churn Modeling
 
 ---
 
-## Repository Structure
+## Skills Demonstrated
 
-postgres/
-    bronze/
-
-guests_warehouse/
-    models/
-        silver/
-        gold/
-
-dashboards/
-docs/
+* Data Engineering
+* Analytics Engineering
+* SQL Development
+* PostgreSQL
+* dbt
+* Data Modeling
+* Customer Analytics
+* Hospitality Analytics
+* CRM Segmentation
+* Power BI
+* Git & GitHub
+* Business Intelligence
